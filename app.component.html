@@ -1,0 +1,38 @@
+<div class="select-style ">
+    <select [(ngModel)]="selectedValue" name="type" > 
+       <!-- <option style="display:none"> -->
+        
+       <option [value]="db.name" *ngFor="let db of dbs">
+          {{db.name}}
+       </option>
+   </select>
+</div>
+
+<br/><br/>
+<div *ngIf="selectedValue == 'MySQL'" class="container">
+    <label>host:</label>
+    <input type="text" class="form-control" name="host" [(ngModel)]="host"><br/><br/>
+    <label>port:</label>
+    <input type="text" class="form-control" name="port" [(ngModel)]="port"><br/><br/>
+    <label>database/schema:</label>
+    <input type="text" class="form-control" name="dbschema" [(ngModel)]="dbschema"><br/><br/>
+    <label>username:</label>
+    <input type="text" class="form-control" name="username" [(ngModel)]="username"><br/><br/>
+    <label>password:</label>
+    <input type="text" class="form-control" name="password" [(ngModel)]="password"><br/><br/>
+    
+</div>
+
+<br/><br/>
+<input type="submit" (click)="getValues()" value="submit" *ngIf="selectedValue=='MySQL'" id="submit">
+
+
+
+
+<p >
+    Host:<span>{{dbinfo[0]}}</span><br/>
+    Port:<span>{{dbinfo[1]}}</span><br/>
+    dbschema:<span>{{dbinfo[2]}}</span><br/>
+    username:<span>{{dbinfo[3]}}</span><br/>
+    password:<span>{{dbinfo[4]}}</span>    <br/>
+</p>
